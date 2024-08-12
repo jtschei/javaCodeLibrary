@@ -16,7 +16,7 @@ public class TestQuickSort {
             sorted[i] = i;
         }
 
-        QuickSort sorter = new QuickSort();
+        Sort sorter = new QuickSort();
         sorter.sort(sorted);
 
         Assertions.assertArrayEquals(expected, sorted);
@@ -33,7 +33,7 @@ public class TestQuickSort {
             sorted[j] = expected[i];
         }
 
-        QuickSort sorter = new QuickSort();
+        Sort sorter = new QuickSort();
         sorter.sort(sorted);
 
         Assertions.assertArrayEquals(expected, sorted);
@@ -61,7 +61,7 @@ public class TestQuickSort {
             i++;
         }
 
-        QuickSort sorter = new QuickSort();
+        Sort sorter = new QuickSort();
         sorter.sort(sorted);
 
         Assertions.assertArrayEquals(expected, sorted);

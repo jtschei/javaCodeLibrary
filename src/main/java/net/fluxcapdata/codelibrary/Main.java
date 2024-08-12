@@ -1,7 +1,7 @@
 package net.fluxcapdata.codelibrary;
 
 class Main {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         System.out.println("CodeLibrary");
         System.out.println("===========");
         System.out.println("Searching:");

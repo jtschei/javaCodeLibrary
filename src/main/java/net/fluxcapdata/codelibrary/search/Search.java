@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface Search {
 
-    public <T extends Comparable> T searchObject(List<T> list, T obj);
+    <T extends Comparable<T>> T searchObject(List<T> list, T obj);
 
 }

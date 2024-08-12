@@ -4,11 +4,11 @@ import java.util.Arrays;
 
 public class MergeSort implements Sort {
     @Override
-    public <T extends Comparable> void sort(T[] data) {
+    public <T extends Comparable<T>> void sort(T[] data) {
         doSort(data,0,data.length-1);
     }
 
-    private <T extends Comparable> void doSort(T[] data, int start, int end) {
+    private <T extends Comparable<T>> void doSort(T[] data, int start, int end) {
         if (start < end) {
             int mid = start + (end-start)/2;
             doSort(data, start, mid);
@@ -17,7 +17,7 @@ public class MergeSort implements Sort {
         }
     }
 
-    private <T extends Comparable> void doMerge(T[] data, int start, int mid, int end) {
+    private <T extends Comparable<T>> void doMerge(T[] data, int start, int mid, int end) {
         T[] left = Arrays.copyOfRange(data, start, mid+1);
         T[] right = Arrays.copyOfRange(data, mid+1, end+1);
 

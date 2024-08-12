@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group = 'net.fluxdata.java.codelibrary'
+group = 'net.fluxcapdata.java.codelibrary'
 version = '1.0-SNAPSHOT'
 
 repositories {

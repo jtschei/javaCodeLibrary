@@ -4,7 +4,7 @@ import java.util.List;
 
 public class BinarySearch implements Search {
     @Override
-    public <T extends Comparable> T searchObject(List<T> list, T obj) {
+    public <T extends Comparable<T>> T searchObject(List<T> list, T obj) {
         int start=0;
         int end=list.size()-1;
         while (start <= end) {

@@ -16,7 +16,7 @@ public class TestMergeSort {
             sorted[i] = i;
         }
 
-        MergeSort sorter = new MergeSort();
+        Sort sorter = new MergeSort();
         sorter.sort(sorted);
 
         Assertions.assertArrayEquals(expected, sorted);
@@ -33,7 +33,7 @@ public class TestMergeSort {
             sorted[j] = expected[i];
         }
 
-        MergeSort sorter = new MergeSort();
+        Sort sorter = new MergeSort();
         sorter.sort(sorted);
 
         Assertions.assertArrayEquals(expected, sorted);
@@ -61,7 +61,7 @@ public class TestMergeSort {
             i++;
         }
 
-        MergeSort sorter = new MergeSort();
+        Sort sorter = new MergeSort();
         sorter.sort(sorted);
 
         Assertions.assertArrayEquals(expected, sorted);
