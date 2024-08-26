@@ -5,25 +5,25 @@ import java.util.List;
 
 public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 
-    class Node<T>  {
-        private Node<T> left;
-        private Node<T> right;
+    class Node  {
+        private Node left;
+        private Node right;
         private final T value;
         public Node(T value) {
             this.left = null;
             this.right = null;
             this.value = value;
         }
-        public Node<T> getLeft() {
+        public Node getLeft() {
             return this.left;
         }
-        public void setLeft(Node<T> n) {
+        public void setLeft(Node n) {
             this.left = n;
         }
-        public Node<T> getRight() {
+        public Node getRight() {
             return this.right;
         }
-        public void setRight(Node<T> n) {
+        public void setRight(Node n) {
             this.right = n;
         }
         public T getValue() {
@@ -31,7 +31,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
         }
     }
 
-    private Node<T> root;
+    private Node root;
 
     public BinarySearchTree() {
         this.root = null;
@@ -40,7 +40,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
     @Override
     public void add(T value) {
         if (this.root == null) {
-            this.root = new Node<>(value);
+            this.root = new Node(value);
         } else {
             this.doAdd(value,this.root);
         }
@@ -52,41 +52,47 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
     }
 
     public List<T> getInOrder() {
-        List<T> list = new LinkedList<T>();
+        List<T> list = new LinkedList<>();
         doOrderTraverse(this.root, list);
         return list;
     }
 
     public List<T> getInReverseOrder() {
-        List<T> list = new LinkedList<T>();
+        List<T> list = new LinkedList<>();
         doReverseOrderTraverse(this.root, list);
         return list;
     }
 
     public List<T> getInPreOrder() {
-        List<T> list = new LinkedList<T>();
+        List<T> list = new LinkedList<>();
         doPreOrderTraverse(this.root, list);
         return list;
     }
 
-    private void doAdd(T value, Node<T> parent) {
+    public List<T> getInPostOrder() {
+        List<T> list = new LinkedList<>();
+        doPostOrderTraverse(this.root, list);
+        return list;
+    }
+
+    private void doAdd(T value, Node parent) {
         if (value.compareTo(parent.getValue()) < 0) {
             if (parent.getLeft() == null) {
-                parent.setLeft(new Node<>(value));
+                parent.setLeft(new Node(value));
             } else {
                 doAdd(value, parent.getLeft());
             }
         }
         else if (value.compareTo(parent.getValue()) > 0) {
             if (parent.getRight() == null) {
-                parent.setRight(new Node<>(value));
+                parent.setRight(new Node(value));
             } else {
                 doAdd(value, parent.getRight());
             }
         }
     }
 
-    private T doGet(T value, Node<T> parent) {
+    private T doGet(T value, Node parent) {
         if (value.compareTo(parent.getValue()) == 0) {
             return parent.getValue();
         } else if (value.compareTo(parent.getValue()) < 0) {
@@ -98,7 +104,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
         }
     }
 
-    private void doOrderTraverse(Node<T> parent, List<T> list) {
+    private void doOrderTraverse(Node parent, List<T> list) {
         if (parent == null) {
             return;
         }
@@ -107,7 +113,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
         doOrderTraverse(parent.getRight(), list);
     }
 
-    private void doReverseOrderTraverse(Node<T> parent, List<T> list) {
+    private void doReverseOrderTraverse(Node parent, List<T> list) {
         if (parent == null) {
             return;
         }
@@ -116,7 +122,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
         doReverseOrderTraverse(parent.getLeft(), list);
     }
 
-    private void doPreOrderTraverse(Node<T> parent, List<T> list) {
+    private void doPreOrderTraverse(Node parent, List<T> list) {
         if (parent == null) {
             return;
         }
@@ -125,12 +131,12 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
         doPreOrderTraverse(parent.getRight(), list);
     }
 
-    private void doPostOrderTraverse(Node<T> parent, List<T> list) {
+    private void doPostOrderTraverse(Node parent, List<T> list) {
         if (parent == null) {
             return;
         }
-        doPreOrderTraverse(parent.getLeft(), list);
-        doPreOrderTraverse(parent.getRight(), list);
+        doPostOrderTraverse(parent.getLeft(), list);
+        doPostOrderTraverse(parent.getRight(), list);
         list.add(parent.getValue());
     }
 }
