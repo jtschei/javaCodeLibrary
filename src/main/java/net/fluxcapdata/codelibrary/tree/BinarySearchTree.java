@@ -124,4 +124,13 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
         doPreOrderTraverse(parent.getLeft(), list);
         doPreOrderTraverse(parent.getRight(), list);
     }
+
+    private void doPostOrderTraverse(Node<T> parent, List<T> list) {
+        if (parent == null) {
+            return;
+        }
+        doPreOrderTraverse(parent.getLeft(), list);
+        doPreOrderTraverse(parent.getRight(), list);
+        list.add(parent.getValue());
+    }
 }
