@@ -9,12 +9,7 @@ public class TestFibonacciSequence {
 
     @Test
     public void TestFibonacci0() {
-        try {
-            FibonacciSequence.fibonacciSequence(-1);
-            Assertions.fail();
-        } catch (InvalidParameterException e) {
-            Assertions.assertTrue(true);
-        }
+        Assertions.assertThrows(RuntimeException.class, () -> FibonacciSequence.fibonacciSequence(-1));
     }
 
     @Test

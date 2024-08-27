@@ -1,7 +1,5 @@
 package net.fluxcapdata.codelibrary.math;
 
-import java.util.InvalidPropertiesFormatException;
-
 public class GreatestCommonDenominator {
 
     public enum Method {
@@ -15,16 +13,11 @@ public class GreatestCommonDenominator {
     }
 
     public static int greatestCommonDenominator(Method method, int a, int b) {
-        switch (method) {
-            case DIVISION:
-                return gcdDivide(a, b);
-            case SUBTRACTION:
-                return gcdSubtract(a, b);
-            case RECURSION:
-                return gcdRecurse(a, b);
-            default:
-                return greatestCommonDenominator(a, b);
-        }
+        return switch (method) {
+            case DIVISION -> gcdDivide(a, b);
+            case SUBTRACTION -> gcdSubtract(a, b);
+            case RECURSION -> gcdRecurse(a, b);
+        };
     }
 
     private static int gcdDivide(int a, int b) {
