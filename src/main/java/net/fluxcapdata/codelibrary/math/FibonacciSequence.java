@@ -10,7 +10,7 @@ public class FibonacciSequence {
 
     public static int fibonacciSequence(int n) {
         if (n < 0) {
-            throw new InvalidParameterException("n must be >= 0");
+            throw new RuntimeException("n must be >= 0");
         } else if (n == 0) {
             return 0;
         } else if (n == 1) {
